@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Isolate test environment using XDG directories
+export XDG_CONFIG_HOME='test/xdg/config/'
+export XDG_STATE_HOME='test/xdg/local/state/'
+export XDG_DATA_HOME='test/xdg/local/share/'
+
+# Create XDG directories if they don't exist
+mkdir -p "${XDG_DATA_HOME}/nvim/site/pack/testing/start/"
+mkdir -p "${XDG_CONFIG_HOME}"
+mkdir -p "${XDG_STATE_HOME}"
+
+# Create symlink to plugin
+ln -sf "$(pwd)" "${XDG_DATA_HOME}/nvim/site/pack/testing/start/simple-hello.nvim"
+
+# Run Neovim as Lua interpreter with plugin loaded
+nvim --cmd 'set loadplugins' -l "$@"
+exit_code=$?
+
+# Cleanup symlink
+rm -f "${XDG_DATA_HOME}/nvim/site/pack/testing/start/simple-hello.nvim"
+
+exit $exit_code

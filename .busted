@@ -1,0 +1,20 @@
+return {
+   _all = {
+      lpath = "lua/?.lua;lua/?/init.lua",
+      pattern = "_spec",
+      ROOT = {"spec/"}
+   },
+
+   unit = {
+      ROOT = {"spec/unit/"},
+      tags = "unit"
+      -- Uses system Lua (no vim API needed)
+   },
+
+   functional = {
+      lua = "./test/nvim-shim",
+      ROOT = {"spec/functional/"},
+      tags = "functional"
+      -- Uses Neovim via shim (has vim API)
+   }
+}
