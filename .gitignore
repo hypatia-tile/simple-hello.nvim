@@ -1,0 +1,23 @@
+# Nix
+.direnv/
+result
+result-*
+
+# LuaRocks
+.luarocks/
+luarocks/
+*.rock
+
+# Test artifacts
+test/xdg/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
